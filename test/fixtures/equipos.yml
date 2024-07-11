@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_equipo: one
+  marca: one
+  serie: MyString
+  estado: one
+  modelo: MyString
+  service_tag: MyString
+  ip: MyString
+  garantia: false
+  empleado: one
+
+two:
+  tipo_equipo: two
+  marca: two
+  serie: MyString
+  estado: two
+  modelo: MyString
+  service_tag: MyString
+  ip: MyString
+  garantia: false
+  empleado: two

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myinvtech</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Holy, please check the info.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <%= msg %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

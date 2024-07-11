@@ -1,0 +1,83 @@
+<div class="d-flex flex-column min-vh-100">
+  <%=render 'partials/header'%>
+  <div class="container border rounded my-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col">
+        <h1 class="text-center bg-light text-muted rounded">Register Users</h1>
+        <%= form_with model: @user do |f| %>
+          <% if @user.errors.any? %>
+            <div>
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <form>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <%= f.label :name %>
+                  <div class="input-group ">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text bg-info bg-opacity-75">
+                        <i><%= image_tag 'icons/user.svg' %></i>
+                      </div>
+                    </div>  
+                    <%= f.text_field :name, required: true, placeholder: 'Name', autofocus: true, class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtregistername' %>
+                  </div>  
+                </div>  
+              </div>  
+              <div class="col-sm">
+                <div class="form group">
+                  <%= f.label :password%>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text bg-info bg-opacity-75">
+                        <i> <%= image_tag 'icons/key.svg'%></i>
+                      </div>  
+                    </div>
+                    <%= f.password_field :password, required: true, placeholder: 'Password', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtregisterpassname'%>  
+                  </div>      
+                </div>  
+              </div>
+              <div class="col-sm">
+                <div class="form group row">
+                  <%= f.label :password_confirmation%>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text bg-info bg-opacity-75">
+                        <i> <%= image_tag 'icons/key.svg'%></i>
+                      </div>  
+                    </div>
+                    <%= f.password_field :password_confirmation, required: true, placeholder: 'Confirm Password', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtregisterconfirmpassname'%>  
+                  </div>      
+                </div>
+              </div>
+              <div class="mt-5">
+                <p class="d-grid gap-2 col-6 mx-auto">
+                  <%= f.button :class => "btn btn-outline-success" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                      <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                      <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                    </svg>
+                    <span>Create new user</span>
+                  <%end%>
+                  <%= link_to home_index_path, class: 'btn btn-outline-danger' do %> Cancel
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                    </svg>
+                  <% end %>
+                </p>
+              </div>
+            </div>  
+          </form>  
+        <% end %>
+      </div>  
+    </div>  
+  </div>
+  <%= render 'partials/footer' %> 
+</div> 
+
+

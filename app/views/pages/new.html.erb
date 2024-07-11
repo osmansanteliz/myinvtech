@@ -1,0 +1,133 @@
+<div class="d-flex flex-column min-vh-100">
+  <%= render 'partials/header' %>
+  <div class="container border rounded my-3">
+    <%= form_with model: @empresa, url: pages_path do |f| %>
+      <form>
+        <h2 class="text-center bg-light text-muted rounded">Empresa</h2>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <%= f.label :nombre%>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-info bg-opacity-75">
+                    <i><%= image_tag 'icons/company.svg'%></i>
+                  </div>  
+                </div>
+                <%= f.text_field :nombre, autofocus: true, required: true, placeholder: 'Bussiness Name', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtcompanyname'%>   
+              </div>  
+            </div>
+          </div>  
+        </div>
+        <h2 class="text-center bg-light text-muted mt-3 rounded">Empleado</h2>
+        <%= f.fields_for(:empleados) do |empleado_form| %>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= empleado_form.label :nombre%>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-info bg-opacity-75">
+                      <i><%= image_tag 'icons/user.svg'%></i>
+                    </div>
+                  </div>
+                  <%= empleado_form.text_field :nombre, autofocus: true, required: true, placeholder: 'Name', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtempleadoname'%>   
+                </div>  
+              </div>  
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <%= empleado_form.label :apellido%>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-info bg-opacity-75">
+                      <i><%= image_tag 'icons/user.svg'%></i>
+                    </div>
+                  </div>
+                  <%= empleado_form.text_field :apellido, autofocus: true, required: true, placeholder: 'Last name', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtempleadolastname'%>   
+                </div>  
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= empleado_form.label :departamento%>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-info bg-opacity-75">
+                      <i><%= image_tag 'icons/company.svg'%></i>
+                    </div>
+                  </div>
+                  <%= empleado_form.text_field :departamento, autofocus: true, required: true, placeholder: 'Department', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtempleadodept'%>   
+                </div>  
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <%= empleado_form.label :responsable_area%>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-info bg-opacity-75">
+                      <i><%= image_tag 'icons/user.svg'%></i>
+                    </div>
+                  </div>
+                  <%= empleado_form.text_field :responsable_area, autofocus: true, required: true, placeholder: 'Manager', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtmanager'%>   
+                </div>  
+              </div> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <%= empleado_form.label :extension%>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-info bg-opacity-75">
+                      <i><%= image_tag 'icons/phone.svg'%></i>
+                    </div>
+                  </div>
+                  <%= empleado_form.text_field :extension, autofocus: true, required: true, placeholder: 'Phone Line', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtempleadophone'%>   
+                </div>  
+              </div>    
+            </div>
+          </div>
+        <%end %>
+        <!--
+          <h2>Tipo de Equipo</h2>
+          <%#= f.fields_for :tipo_equipo do |tipoequipo_form| %>
+            <%#= tipoequipo_form.text_field :tipo_equipo %>
+          <%# end %>
+          <h2>Marca</h2>
+          <%#= f.fields_for :marca do |marca_form| %>
+            <%#= marca_form.text_field :marca %>
+          <%# end %>
+          <h2>Estado</h2>
+          <%#= f.fields_for :estado do |estado_form| %>
+            <%#= estado_form.text_field :estado %>
+          <%# end %>
+          <h2>Equipo</h2>
+          <%#= f.fields_for :equipo do |equipo_form| %>
+            <%#= equipo_form.text_field :serie %>
+            <%#= equipo_form.text_field :modelo %>
+            <%#= equipo_form.text_field :service_tag %>
+            <%#= equipo_form.text_field :ip %>
+            <%#= equipo_form.text_field :garantia %>
+          <%# end %>
+        -->
+        <div class="text-center mb-2 mt-4">
+          <%= f.button :submit, class: 'btn btn-primary' do %>
+            <%= image_tag 'icons/save.svg'%>
+            <span>Save</span>
+          <%end%>
+          <%= link_to home_index_path, class: 'btn btn-danger' do %>
+            <%= image_tag('icons/home.svg')%>
+            <span> Cancel </span>
+          <%end%>
+        </div> 
+      </form> 
+    <%end %>
+  </div>
+  <%= render 'partials/footer' %>
+</div>
+

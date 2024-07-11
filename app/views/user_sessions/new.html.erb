@@ -1,0 +1,64 @@
+<div class="d-flex flex-column min-vh-100">
+  <%=render 'partials/header'%>
+  <div class="container border rounded my-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col">
+          <h1 class="text-center bg-light text-muted rounded">Users Login</h1>
+          <%= form_with model: @user, url: user_sessions_path do |f| %>
+            <form>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <%= f.label :name%>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text bg-info bg-opacity-75">
+                          <i><%= image_tag 'icons/user.svg'%></i>
+                        </div>  
+                      </div> 
+                      <%= f.text_field :name, autofocus: true, required: true, placeholder: 'Name', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtsessionname'%> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <div class="form group">
+                    <%= f.label :password%>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text bg-info bg-opacity-75">
+                          <i><%= image_tag 'icons/key.svg'%></i>
+                        </div>  
+                      </div>
+                      <%= f.password_field :password, required: true, placeholder: 'Password', class: 'form-control bg-info bg-opacity-10 border border-info', id: 'txtsessionpass'%>  
+                    </div>
+                  </div>  
+                </div>  
+              </div>
+              <div class="row mt-5">
+                  <p class="d-grid gap-2 col-6 mx-auto">
+                    <%= f.button :submit, :class => "btn btn-outline-success" do %>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg>
+                      <span> Sign In </span>
+                    <%end%>
+                    <%= link_to home_index_path, :class => "btn btn-outline-danger" do %> Cancel
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                      </svg>                
+                    <%end%>
+                  </p>
+                </div>
+            </form>
+          <% end %>
+        </div>
+    </div>
+    <%= link_to home_index_path do %> Home
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+      </svg>
+    <% end %>
+  </div>
+  <%= render 'partials/footer' %>
+</div>
