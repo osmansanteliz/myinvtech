@@ -16,15 +16,19 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install packages needed to build gems
+# Install packages needed to build gems and frontend dependencies
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config nodejs yarn
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
+
+# Install frontend dependencies
+COPY package.json yarn.lock ./
+RUN yarn install --check-files
 
 # Copy application code
 COPY . .
@@ -35,7 +39,8 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Precompiling assets for production using secret RAILS_MASTER_KEY
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
-RUN ./bin/rails assets:precompile
+
+RUN echo "RAILS_MASTER_KEY: $RAILS_MASTER_KEY" && ./bin/rails assets:precompile || (cat log/development.log && false)
 
 # Final stage for app image
 FROM base
