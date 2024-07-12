@@ -29,10 +29,6 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-# Install frontend dependencies
-COPY package.json yarn.lock ./
-RUN yarn install --check-files
-
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
